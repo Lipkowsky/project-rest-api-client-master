@@ -1,0 +1,32 @@
+<!-- Toolbar -->
+<mat-toolbar>
+
+  <span class="logoText">Aplikacja do zarządzania projektami</span>
+  <span class="example-spacer"></span>
+  <button class="myButton" *ngIf="role==='ROLE_ADMIN' && isLoggedIn">
+    <a class="myButton2" routerLink="/dodajProjekt" >Dodaj projekt</a>
+  </button>
+  <button *ngIf="isLoggedIn" class="myButton">
+    <a class="myButton2" routerLink="/projekty">Lista projektów</a>
+  </button>
+  <button *ngIf="!isLoggedIn" class="myButton">
+    <a class="myButton2" routerLink="/login">Logowanie</a>
+  </button>
+
+  <button *ngIf="isLoggedIn" class="myButton">
+    <a class="myButton2"  (click)="logout()" routerLink="/login">Wyloguj</a>
+  </button>
+
+
+</mat-toolbar>
+
+
+<div class="content" role="main">
+
+  <router-outlet></router-outlet>
+
+</div>
+
+
+
+

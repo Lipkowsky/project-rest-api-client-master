@@ -1,0 +1,18 @@
+<mat-card *ngIf="zadanie">
+  <div class="center">
+    <h1><b>{{zadanie.nazwa}}</b></h1>
+    <mat-list class="center" >
+      <mat-list-item><span class="zadanie-tresc">Opis zadania: {{zadanie.opis}}</span></mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item><span class="zadanie-tresc">Kolejnosc: {{zadanie.kolejnosc}}</span></mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item><span class="zadanie-tresc">Data oddania: {{zadanie.dataczasOddania | date}}</span></mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item> <button (click)="usunZadanie()" mat-raised-button>
+          Usuń zadanie
+        </button></mat-list-item>
+    </mat-list>
+
+
+  </div>
+</mat-card>

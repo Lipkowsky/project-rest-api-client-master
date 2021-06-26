@@ -1,0 +1,24 @@
+<mat-card class="login">
+  <div class="example-container">
+    <img src="assets\TuPlay.png" width="10%">
+  </div>
+    <div class="example-container">
+      <h1><b>Strefa logowania</b></h1><br>
+        <mat-form-field appearance="fill">
+          <mat-label>Nazwa użytkownika</mat-label>
+          <input matInput placeholder="Nazwa użytkownika" [(ngModel)]="username" required size="40">
+        </mat-form-field>
+      </div>
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+            <mat-label>Hasło</mat-label>
+            <input matInput [(ngModel)]="password" [type]="hide ? 'password' : 'text'" size="40">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+      </div>
+      <div class="example-container">
+        <button (click)="handleLogin()" mat-raised-button color="primary">Zaloguj się</button>
+      </div>
+</mat-card>

@@ -1,0 +1,83 @@
+{
+  "studenci": [
+    {
+      "student_id": 1,
+      "imie": "Lisa",
+      "nazwisko": "Kowalski",
+      "nr_indeksu": "108646",
+      "email": "kowalski@gmail.com",
+      "stacjonarny": true
+    },
+    {
+      "student_id": 2,
+      "imie": "Adam",
+      "nazwisko": "Botek",
+      "nr_indeksu": "103646",
+      "email": "botek@gmail.com",
+      "stacjonarny": false
+    },
+    {
+      "student_id": 3,
+      "imie": "Piotr",
+      "nazwisko": "Lipkowski",
+      "nr_indeksu": "104646",
+      "email": "lipkowski@gmail.com",
+      "stacjonarny": true
+    }
+  ],
+  "projekty": [
+    {
+      "projekt_id": 1,
+      "nazwa": "Pierwszy",
+      "opis": "Pierwszy Projekt",
+      "dataczas_utworzenia": "2021-11-01",
+      "data_oddania": "2021-11-16",
+      "student_id": 1,
+      "zadania":[{"zadanie_id": 1}, {"zadanie_id": 2}, {"zadanie_id": 3}]
+    },
+    {
+      "projekt_id": 2,
+      "nazwa": "Drugi",
+      "opis": "Drugi Projekt",
+      "dataczas_utworzenia": "2021-11-01",
+      "data_oddania": "2021-11-16",
+      "student_id": 2,
+      "zadania":[{"zadanie_id": 2}]
+    },
+    {
+      "projekt_id": 3,
+      "nazwa": "Trzeci",
+      "opis": "Trzeci Projekt",
+      "dataczas_utworzenia": "2021-11-01",
+      "data_oddania": "2021-11-16",
+      "student_id": 3,
+      "zadania":[{"zadanie_id": 3}]
+    }
+  ],
+  "zadania": [
+    {
+      "zadanie_id": 1,
+      "projekt_id": 1,
+      "nazwa": "Pierwsze",
+      "kolejnosc": 1,
+      "opis": "Zadanie nr 1",
+      "dataczas_dodania": "2021-11-16"
+    },
+    {
+      "zadanie_id": 2,
+      "projekt_id": 2,
+      "nazwa": "Drugie",
+      "kolejnosc": 1,
+      "opis": "Zadanie nr 2",
+      "dataczas_dodania": "2021-11-16"
+    },
+    {
+        "zadanie_id": 3,
+        "projekt_id": 3,
+        "nazwa": "Trzecie",
+        "kolejnosc": 1,
+        "opis": "Zadanie nr 3",
+        "dataczas_dodania": "2021-11-16"
+      }
+  ]
+}

@@ -1,0 +1,18 @@
+<mat-card *ngIf="student">
+  <h1>Informacje o studentcie</h1>
+  <p>Imię: {{student.imie}}</p>
+  <p>Nazwisko: {{student.nazwisko}}</p>
+  <p>Email: {{student.email}}</p>
+  <p>Nr indeksu: {{student.nrIndeksu}}</p>
+  <p>Stacjonany :  {{student.stacjonarny ? 'tak' : 'nie'}}</p>
+  <h3>Projekty powiązane ze studentem</h3>
+  <ul class="projektyStudenta">
+    <li *ngFor="let student of student.projekty">
+      <a href="projekt/{{ student.projektId }}">
+        <span class="projekt">({{student.projektId}})  </span>
+        <span class="projekt"> {{student.nazwa}} </span>
+      </a>
+    </li>
+  </ul>
+
+</mat-card>
