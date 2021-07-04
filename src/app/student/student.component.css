@@ -1,0 +1,9 @@
+h1 {
+    color:blueviolet;
+}
+.text-bold{
+    font-weight: bold;
+}
+.projektyStudenta {
+    list-style-type: none;
+}

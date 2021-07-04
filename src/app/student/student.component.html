@@ -1,11 +1,12 @@
 <mat-card *ngIf="student">
+  <div class="infoProject center">
   <h1>Informacje o studencie</h1>
-  <p>Imię: {{student.imie}}</p>
-  <p>Nazwisko: {{student.nazwisko}}</p>
-  <p>Email: {{student.email}}</p>
-  <p>Nr indeksu: {{student.nrIndeksu}}</p>
-  <p>Stacjonany :  {{student.stacjonarny ? 'tak' : 'nie'}}</p>
-  <h3>Projekty powiązane ze studentem</h3>
+  <p class="text-bold">Imię: {{student.imie}}</p>
+  <p class="text-bold">Nazwisko: {{student.nazwisko}}</p>
+  <p class="text-bold">Email: {{student.email}}</p>
+  <p class="text-bold">Nr indeksu: {{student.nrIndeksu}}</p>
+  <p class="text-bold">Stacjonany :  {{student.stacjonarny ? 'tak' : 'nie'}}</p>
+  <h3>Projekty powiązane ze studentem: </h3>
   <ul class="projektyStudenta">
     <li *ngFor="let p of projekty">
       <a href="projekt/{{ p.projektId }}">
@@ -14,5 +15,5 @@
       </a>
     </li>
   </ul>
-
+</div>
 </mat-card>
