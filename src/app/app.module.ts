@@ -27,6 +27,7 @@ import {DodajProjektComponent} from './dodaj-projekt/dodaj-projekt.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
+
 @NgModule({
   declarations: [
     AppComponent,
