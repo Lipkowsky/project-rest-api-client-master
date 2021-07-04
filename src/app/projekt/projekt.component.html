@@ -1,139 +1,125 @@
 <mat-card class="background" *ngIf="projekt">
   <div id="left50">
     <div class="infoProject">
-    <h1 style="color:blueviolet;">Informacje o projekcie</h1>
-    <p class="zadanie-tresc">Nazwa: {{ projekt.nazwa }}</p>
-    <p class="zadanie-tresc">Opis: {{ projekt.opis }}</p>
-    <p class="zadanie-tresc">Data i czas utworzenia: {{ projekt.dataczasUtworzenia | date }}</p>
-    <div style="color: red;" *ngIf="afterDate">
-    <p class="zadanie-tresc">Data oddania: {{ projekt.dataOddania | date }}</p>
-  </div>
-  <div *ngIf="!afterDate">
-    <p class="zadanie-tresc">Data oddania: {{ projekt.dataOddania | date }}</p>
-  </div>
-</div>
-<div class="infoProject">
-    <h3>Lista zadań</h3>
-    <ul class="zadania">
-      <li *ngFor="let zadanie of zadania">
-        <span class="zadanie">{{ zadanie.nazwa }} </span>
-        <span class="zadanie">{{ zadanie.kolejnosc }} </span>
-        <span class="zadanie">{{ zadanie.opis }} </span>
-        <span class="zadanie">{{ zadanie.dataczasOddania | date }} </span>
-      </li>
-    </ul>
-  </div>
-  <div class="infoProject">
-    <h3>Lista studentów</h3>
-    <ul class="studenci">
-      <li *ngFor="let student of studenciProjekt">
-        <span class="student">{{ student.imie }} </span>
-        <span class="student">{{ student.nazwisko }} </span>
-        <span class="student">{{ student.nrIndeksu }} </span>
-        <span class="student">{{ student.email }} </span>
-        <span class="student"
-        >Stacjonany : {{ student.stacjonarny ? "tak" : "nie" }}
-      </span>
-        <span *ngIf="role==='ROLE_ADMIN'" class="student"><button (click)="usunZProjektu(student.studentId)" mat-raised-button>
-      Usuń z projektu
-    </button></span>
-      </li>
-    </ul>
-    <div class="example-container">
-      <mat-form-field appearance="fill">
-        <mat-label>Wybierz studenta z listy</mat-label>
-        <mat-select [(value)]="selected">
-          <mat-option *ngFor="let loc of studenci"
-                      value="{{loc.studentId}}">{{ loc.nazwisko }} {{ loc.imie }} </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <br>
-      <button (click)="dodajStudenta()" mat-raised-button>
-        Dodaj studenta do projektu
-      </button>
+      <h1 style="color:blueviolet;">Informacje o projekcie</h1>
+      <p class="zadanie-tresc">Nazwa: {{ projekt.nazwa }}</p>
+      <p class="zadanie-tresc">Opis: {{ projekt.opis }}</p>
+      <p class="zadanie-tresc">Data i czas utworzenia: {{ projekt.dataczasUtworzenia | date }}</p>
+      <div style="color: red;" *ngIf="afterDate">
+        <p class="zadanie-tresc">Data oddania: {{ projekt.dataOddania | date }}</p>
+      </div>
+      <div *ngIf="!afterDate">
+        <p class="zadanie-tresc">Data oddania: {{ projekt.dataOddania | date }}</p>
+      </div>
     </div>
+    <div class="infoProject">
+      <h1>Lista zadań</h1>
+      <ul class="zadania">
+        <li *ngFor="let zadanie of zadania">
+          <mat-checkbox class="example-margin">
+          </mat-checkbox>
+          <span class="zadanie example-margin">{{ zadanie.nazwa }} </span>
+          <span class="zadanie example-margin">{{ zadanie.kolejnosc }} </span>
+          <span class="zadanie example-margin">{{ zadanie.opis }} </span>
+          <span class="zadanie example-margin">{{ zadanie.dataczasOddania | date }} </span>
+        </li>
+      </ul>
+    </div>
+    <div class="infoProject">
+      <h1>Lista studentów</h1>
+      <ul class="studenci">
+        <li *ngFor="let student of studenciProjekt">
+          <mat-checkbox [checked]="true" [disabled]="true"></mat-checkbox>
+          <span class="student example-margin">{{ student.imie }} </span>
+          <span class="student example-margin">{{ student.nazwisko }} </span>
+          <span class="student example-margin">{{ student.nrIndeksu }} </span>
+          <span class="student example-margin">{{ student.email }} </span>
+          <span class="student example-margin">Stacjonany : {{ student.stacjonarny ? "tak" : "nie" }}
+          </span>
+          <span *ngIf="role==='ROLE_ADMIN'" class="student"><button (click)="usunZProjektu(student.studentId)"
+              mat-raised-button>
+              Usuń z projektu
+            </button></span>
+        </li>
+      </ul>
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Wybierz studenta z listy</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option *ngFor="let loc of studenci" value="{{loc.studentId}}">{{ loc.nazwisko }} {{ loc.imie }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <button (click)="dodajStudenta()" mat-raised-button>
+          Dodaj studenta do projektu
+        </button>
+      </div>
     </div>
   </div>
   <div class="right50">
     <div class="infoProject">
-    <h1>Dodawanie nowego zadania</h1>
-    <div class="example-container">
-      <p>Nazwa zadania</p>
-      <mat-form-field appearance="fill">
-        <mat-label>Nazwa zadania</mat-label>
-        <input
-          matInput
-          placeholder="Nazwa zadania"
-          [(ngModel)]="nazwa"
-          required
-        />
-      </mat-form-field>
-    </div>
-
-    <div class="example-container">
-      <p>Kolejność zadania</p>
-      <mat-form-field appearance="fill">
-        <mat-label>Kolejność zadania</mat-label>
-        <input
-          type="number"
-          matInput
-          placeholder="Kolejność zadania"
-          [(ngModel)]="kolejnosc"
-          required
-        />
-      </mat-form-field>
-    </div>
-    <div class="example-container">
-      <p>Opis zadania</p>
-      <mat-form-field appearance="fill">
-        <mat-label>Opis zadania</mat-label>
-        <textarea
-          matInput
-          cdkTextareaAutosize
-          #autosize="cdkTextareaAutosize"
-          cdkAutosizeMinRows="1"
-          cdkAutosizeMaxRows="5"
-          [(ngModel)]="opis"
-        ></textarea>
-      </mat-form-field>
-    </div>
-
-    <p>Wskaż datę zakończenia</p>
-    <mat-form-field appearance="fill">
-
-      <mat-label>Wybierz date</mat-label>
-      <input matInput [matDatepicker]="picker" [(ngModel)]="data"/>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-    <br>
-    <button (click)="dodajZadanieDoProjektu()" mat-raised-button>
-      Dodaj nowe zadanie do projektu
-    </button>
-    <br><br>
-    <button (click)="usunProjekt()" mat-raised-button>
-      Usuń projekt
-    </button>
-  </div>
-  </div>
-
-
-
-  <div class="right50">
-    <div class="infoProject">
-    <div class="example-container">
-
-      <h1>Pliki projektu:</h1>
-      <div style="margin-top: 20px" class="example-container">
-        <button mat-raised-button>Dodaj plik</button>
+      <h1>Dodawanie nowego zadania</h1>
+      <div class="example-container">
+        <p>Nazwa zadania</p>
+        <mat-form-field appearance="fill">
+          <mat-label>Nazwa zadania</mat-label>
+          <input matInput placeholder="Nazwa zadania" [(ngModel)]="nazwa" required />
+        </mat-form-field>
       </div>
 
-<!--      <ul class="pliki">-->
-<!--        <li *ngFor="let plik of pliki">-->
-<!--          <span class="student"><a href="{{ plik.url }}">{{plik.name}}</a> </span>-->
-<!--        </li>-->
-<!--      </ul>-->
+      <div class="example-container">
+        <p>Kolejność zadania</p>
+        <mat-form-field appearance="fill">
+          <mat-label>Kolejność zadania</mat-label>
+          <input type="number" matInput placeholder="Kolejność zadania" [(ngModel)]="kolejnosc" required />
+        </mat-form-field>
+      </div>
+      <div class="example-container">
+        <p>Opis zadania</p>
+        <mat-form-field appearance="fill">
+          <mat-label>Opis zadania</mat-label>
+          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [(ngModel)]="opis"></textarea>
+        </mat-form-field>
+      </div>
+
+      <p>Wskaż datę zakończenia</p>
+      <mat-form-field appearance="fill">
+
+        <mat-label>Wybierz date</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="data" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <br>
+      <button (click)="dodajZadanieDoProjektu()" mat-raised-button>
+        Dodaj nowe zadanie do projektu
+      </button>
+      <br><br>
+      <button (click)="usunProjekt()" mat-raised-button>
+        Usuń projekt
+      </button>
     </div>
   </div>
-</div>
+
+
+
+  <div class="right50">
+    <div class="infoProject">
+      <div class="example-container">
+
+        <h1>Pliki projektu:</h1>
+        <div style="margin-top: 20px" class="example-container">
+          <button mat-raised-button>Dodaj plik</button>
+        </div>
+
+        <!--      <ul class="pliki">-->
+        <!--        <li *ngFor="let plik of pliki">-->
+        <!--          <span class="student"><a href="{{ plik.url }}">{{plik.name}}</a> </span>-->
+        <!--        </li>-->
+        <!--      </ul>-->
+      </div>
+    </div>
+  </div>
 </mat-card>

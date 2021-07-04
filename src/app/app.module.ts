@@ -27,7 +27,8 @@ import {DodajProjektComponent} from './dodaj-projekt/dodaj-projekt.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { DodajStudentaComponent } from './dodaj-studenta/dodaj-studenta.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import {MatListModule} from '@angular/material/list';
     ProjektComponent,
     StudentComponent,
     DodajProjektComponent,
+    DodajStudentaComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ import {MatListModule} from '@angular/material/list';
     MatSelectModule,
     MatSnackBarModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule
   ],
   providers: [
     MatDatepickerModule,

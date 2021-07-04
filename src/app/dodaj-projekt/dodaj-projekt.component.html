@@ -1,39 +1,30 @@
 <mat-card>
-<h1>Dodawanie projektu</h1>
-<div class="example-container">
-  <p>Nazwa projektu</p>
+  <div class="infoNewProject center">
+  <h1>Dodawanie projektu</h1>
+  <div class="example-container">
+    <b><p>Nazwa projektu</p></b>
+    <mat-form-field appearance="fill">
+      <mat-label>Nazwa projektu</mat-label>
+      <input matInput placeholder="Nazwa zadania" [(ngModel)]="nazwa" required />
+    </mat-form-field>
+  </div>
+  <div class="example-container">
+    <b><p>Opis projektu</p></b>
+    <mat-form-field appearance="fill">
+      <mat-label>Opis projektu</mat-label>
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="5" [(ngModel)]="opis"></textarea>
+    </mat-form-field>
+  </div>
+  <b><p>Wskaż datę zakończenia</p></b>
   <mat-form-field appearance="fill">
-    <mat-label>Nazwa projektu</mat-label>
-    <input
-      matInput
-      placeholder="Nazwa zadania"
-      [(ngModel)]="nazwa"
-      required
-    />
-  </mat-form-field>
+    <mat-label>Wybierz date</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="data" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field><br>
+  <button (click)="dodajProjekt()" mat-raised-button>
+    Dodaj nowy projekt
+  </button>
 </div>
-<div class="example-container">
-  <p>Opis projektu</p>
-  <mat-form-field appearance="fill">
-    <mat-label>Opis projektu</mat-label>
-    <textarea
-      matInput
-      cdkTextareaAutosize
-      #autosize="cdkTextareaAutosize"
-      cdkAutosizeMinRows="1"
-      cdkAutosizeMaxRows="5"
-      [(ngModel)]="opis"
-    ></textarea>
-  </mat-form-field>
-</div>
-<p>Wskaż datę zakończenia</p>
-<mat-form-field appearance="fill">
-  <mat-label>Wybierz date</mat-label>
-  <input matInput [matDatepicker]="picker" [(ngModel)]="data"/>
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field><br>
-<button (click)="dodajProjekt()" mat-raised-button>
-  Dodaj nowy projekt
-</button>
 </mat-card>

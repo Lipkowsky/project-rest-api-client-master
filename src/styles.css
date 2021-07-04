@@ -99,3 +99,9 @@ h1{
 .sample-text {
   font-weight: 400;
 }
+
+.infoNewProject {
+  border: 3px outset #620275;
+  padding: 20px;
+  margin: 50px;
+}

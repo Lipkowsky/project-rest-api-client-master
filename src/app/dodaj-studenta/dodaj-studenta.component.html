@@ -1,0 +1,40 @@
+<mat-card>
+    <div class="infoNewProject center">
+    <h1>Dodaj studenta</h1>
+    <div class="example-container">
+      <b><p>Imię</p></b>
+      <mat-form-field appearance="fill">
+        <mat-label>Imię</mat-label>
+        <input matInput placeholder="Nazwa zadania" [(ngModel)]="imie" required />
+      </mat-form-field>
+    </div>
+    <div class="example-container">
+        <b><p>Nazwisko</p></b>
+        <mat-form-field appearance="fill">
+          <mat-label>Nazwisko</mat-label>
+          <input matInput placeholder="Nazwa zadania" [(ngModel)]="nazwisko" required />
+        </mat-form-field>
+      </div>
+      <div class="example-container">
+        <b><p>E-mail</p></b>
+        <mat-form-field appearance="fill">
+          <mat-label>E-mail</mat-label>
+          <input matInput placeholder="Nazwa zadania" [(ngModel)]="email" required />
+        </mat-form-field>
+      </div>
+      <div class="example-container">
+        <b><p>Nr Indeksu</p></b>
+        <mat-form-field appearance="fill">
+          <mat-label>Nr indeksu</mat-label>
+          <input matInput placeholder="Nazwa zadania" [(ngModel)]="nrIndeksu" required />
+        </mat-form-field>
+      </div>
+      <div class="example-container">
+        <mat-checkbox [checked]="true" [(ngModel)]="stacjonarny">Czy student stacjonarny</mat-checkbox>
+      </div>
+      
+    <button (click)="dodajStudenta()" mat-raised-button>
+      Dodaj nowego studenta
+    </button>
+  </div>
+  </mat-card>
