@@ -15,7 +15,7 @@
 <div class="infoProject">
     <h3>Lista zadań</h3>
     <ul class="zadania">
-      <li *ngFor="let zadanie of projekt.zadania">
+      <li *ngFor="let zadanie of zadania">
         <span class="zadanie">{{ zadanie.nazwa }} </span>
         <span class="zadanie">{{ zadanie.kolejnosc }} </span>
         <span class="zadanie">{{ zadanie.opis }} </span>
@@ -26,7 +26,7 @@
   <div class="infoProject">
     <h3>Lista studentów</h3>
     <ul class="studenci">
-      <li *ngFor="let student of projekt.studenci">
+      <li *ngFor="let student of studenciProjekt">
         <span class="student">{{ student.imie }} </span>
         <span class="student">{{ student.nazwisko }} </span>
         <span class="student">{{ student.nrIndeksu }} </span>
@@ -39,7 +39,7 @@
     </button></span>
       </li>
     </ul>
-    <div class="example-container" *ngIf="role==='ROLE_ADMIN'">
+    <div class="example-container">
       <mat-form-field appearance="fill">
         <mat-label>Wybierz studenta z listy</mat-label>
         <mat-select [(value)]="selected">
@@ -69,7 +69,7 @@
         />
       </mat-form-field>
     </div>
-  
+
     <div class="example-container">
       <p>Kolejność zadania</p>
       <mat-form-field appearance="fill">
@@ -128,11 +128,11 @@
         <button mat-raised-button>Dodaj plik</button>
       </div>
 
-      <ul class="pliki">
-        <li *ngFor="let plik of pliki">
-          <span class="student"><a href="{{ plik.url }}">{{plik.name}}</a> </span>
-        </li>
-      </ul>
+<!--      <ul class="pliki">-->
+<!--        <li *ngFor="let plik of pliki">-->
+<!--          <span class="student"><a href="{{ plik.url }}">{{plik.name}}</a> </span>-->
+<!--        </li>-->
+<!--      </ul>-->
     </div>
   </div>
 </div>

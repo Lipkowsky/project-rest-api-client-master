@@ -23,24 +23,28 @@ export class ProjektComponent implements OnInit {
   dodany: any;
   pliki: any;
   afterDate: any;
+  zadania: any;
+  studenciProjekt: any;
 
   constructor(public projektService: ProjektService, private router: Router, private authenticationService: AuthenticationService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.isLoggedIn = this.authenticationService.isUserLoggedIn();
-    if (!this.isLoggedIn) {
-   
-      this.router.navigate(['/login']);
-    } else {
-      this.role = this.authenticationService.getRole();
-      console.log(this.role);
-    }
+    // if (!this.isLoggedIn) {
+    //
+    //   this.router.navigate(['/login']);
+    // } else {
+    //   this.role = this.authenticationService.getRole();
+    //   console.log(this.role);
+    // }
 
     this.route.params.subscribe(data => {
       this.getProjekt(data.projekt_id);
       this.getStudenci();
-      this.pobierzPliki(data.projekt_id);
+      this.getZadania(data.projekt_id);
+      // this.pobierzPliki(data.projekt_id);
+      this.getStudenciProjekt(data.projekt_id);
     });
 
   }
@@ -54,13 +58,13 @@ export class ProjektComponent implements OnInit {
 
       const projectDate = new Date(this.projekt.dataOddania);
       console.log(projectDate);
-  
+
 
       if (projectDate < new Date()) {
         this.afterDate = true;
       }
 
-    
+
     });
   }
 
@@ -88,6 +92,28 @@ export class ProjektComponent implements OnInit {
     });
   }
 
+  getStudenciProjekt(ProjektId: number) {
+    let dane = this.projektService.getStudentciProjekt(ProjektId);
+    this.studenciProjekt=[];
+    dane.subscribe(data => {
+      for (let i = 0; i < data.length; i++) {
+        let student = this.projektService.student(data[i].studentId);
+        student.subscribe(data2 => {
+          console.log("Dane stundet",data2);
+          this.studenciProjekt[i] = data2;
+        });
+      }
+    });
+  }
+
+
+  getZadania(ProjektId: number) {
+    this.zadania = this.projektService.ZadaniaZProjektu(ProjektId).subscribe(data => {
+      this.zadania = data;
+      console.log(this.zadania);
+    });
+  }
+
   dodajStudenta() {
     this.projektService.studentDoProjektu(this.selected, this.projekt.projektId).subscribe(data => {
       console.log('Dodano studenta');
@@ -102,10 +128,10 @@ export class ProjektComponent implements OnInit {
     this.router.navigate(['/projekty']);
   }
 
-  pobierzPliki(projekt_id: number) {
-    this.pliki = this.projektService.pobierzPliki(projekt_id).subscribe(data => {
-      this.pliki = data;
-      console.log("Pliki projektu:",this.pliki);
-    });
-  }
+  // pobierzPliki(projekt_id: number) {
+  //   this.pliki = this.projektService.pobierzPliki(projekt_id).subscribe(data => {
+  //     this.pliki = data;
+  //     console.log("Pliki projektu:",this.pliki);
+  //   });
+  // }
 }

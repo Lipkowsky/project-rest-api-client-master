@@ -22,12 +22,12 @@ export class DodajProjektComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn = this.authenticationService.isUserLoggedIn();
-    if (!this.isLoggedIn) {
-      this.router.navigate(['/login']);
-    } else {
-      this.role = this.authenticationService.getRole();
-      console.log(this.role);
-    }
+    // if (!this.isLoggedIn) {
+    //   this.router.navigate(['/login']);
+    // } else {
+    //   this.role = this.authenticationService.getRole();
+    //   console.log(this.role);
+    // }
   }
 
   dodajProjekt() {

@@ -1,4 +1,4 @@
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 
 @Injectable({
@@ -6,7 +6,7 @@ import {Injectable} from '@angular/core';
 })
 export class ProjektService {
 
-  url = 'https://localhost:8443/api/';
+  url = 'http://localhost:8080/api/';
 
   constructor(private http: HttpClient) {
   }
@@ -30,6 +30,14 @@ export class ProjektService {
     return this.http.get<any>(this.url + 'studenci/');
   }
 
+  student(idStudent: number){
+    return this.http.get<any>(this.url + 'student?id=' + idStudent);
+  }
+
+  getStudentciProjekt(idProjektu: number) {
+    return this.http.get<any>(this.url + 'studencizprojektu/' + idProjektu);
+  }
+
   studentDoProjektu(student_id: number, projekt_id: number) {
     let options = {};
     return this.http.post<any>(this.url + 'stud-do-proj/' + student_id + '/' + projekt_id, {options});
@@ -39,7 +47,11 @@ export class ProjektService {
     return this.http.delete(this.url + 'usunZProjektu/' + projekt_id + '/' + student_id);
   }
 
-  pobierzPliki(projekt_id: number) {
-    return this.http.get<any>('https://localhost:8443/files?projekt_id=' + projekt_id);
+  ZadaniaZProjektu(projekt_id: number) {
+    return this.http.get<any>(this.url + 'zadania-z-projektu/' + projekt_id);
   }
+
+  // pobierzPliki(projekt_id: number) {
+  //   return this.http.get<any>('https://localhost:8443/files?projekt_id=' + projekt_id);
+  // }
 }
