@@ -8,6 +8,8 @@
       <mat-divider></mat-divider>
       <mat-list-item><span class="zadanie-tresc">Data oddania: {{zadanie.dataczasOddania | date}}</span></mat-list-item>
       <mat-divider></mat-divider>
+      <mat-list-item><span class="zadanie-tresc">Czy wykonane: {{zadanie.skonczone}}</span></mat-list-item>
+      <mat-divider></mat-divider>
       <mat-list-item> <button (click)="usunZadanie()" mat-raised-button>
           Usuń zadanie
         </button></mat-list-item>

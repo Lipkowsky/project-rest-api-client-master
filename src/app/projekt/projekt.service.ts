@@ -30,7 +30,7 @@ export class ProjektService {
     return this.http.get<any>(this.url + 'studenci/');
   }
 
-  student(idStudent: number){
+  student(idStudent: number) {
     return this.http.get<any>(this.url + 'student?id=' + idStudent);
   }
 
@@ -49,6 +49,14 @@ export class ProjektService {
 
   ZadaniaZProjektu(projekt_id: number) {
     return this.http.get<any>(this.url + 'zadania-z-projektu/' + projekt_id);
+  }
+
+  UkonczZadanie(zadanie_id: number) {
+    return this.http.get<any>(this.url + 'zakoncz/' + zadanie_id);
+  }
+
+  NieUkonczZadanie(zadanie_id: number) {
+    return this.http.get<any>(this.url + 'niezakonczone/' + zadanie_id);
   }
 
   // pobierzPliki(projekt_id: number) {

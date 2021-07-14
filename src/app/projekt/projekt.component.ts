@@ -128,6 +128,21 @@ export class ProjektComponent implements OnInit {
     this.router.navigate(['/projekty']);
   }
 
+  zmianaStatusuZadania(zadanieId: number, status: boolean)
+  {
+    if(status)
+    {
+      this.projektService.NieUkonczZadanie(zadanieId).subscribe(data => {
+        console.log("STATUS ZADANIA",data);
+      });
+    }
+    else {
+      this.projektService.UkonczZadanie(zadanieId).subscribe(data => {
+        console.log("STATUS ZADANIA",data);
+      });
+    }
+  }
+
   // pobierzPliki(projekt_id: number) {
   //   this.pliki = this.projektService.pobierzPliki(projekt_id).subscribe(data => {
   //     this.pliki = data;

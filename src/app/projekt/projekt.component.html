@@ -16,7 +16,7 @@
       <h1>Lista zadań</h1>
       <ul class="zadania">
         <li *ngFor="let zadanie of zadania">
-          <mat-checkbox class="example-margin">
+          <mat-checkbox class="example-margin" [checked]="zadanie.skonczone" (change)="zmianaStatusuZadania(zadanie.zadanieId,zadanie.skonczone)">
           </mat-checkbox>
           <span class="zadanie example-margin">{{ zadanie.nazwa }} </span>
           <span class="zadanie example-margin">{{ zadanie.kolejnosc }} </span>
@@ -103,23 +103,4 @@
     </div>
   </div>
 
-
-
-  <div class="right50">
-    <div class="infoProject">
-      <div class="example-container">
-
-        <h1>Pliki projektu:</h1>
-        <div style="margin-top: 20px" class="example-container">
-          <button mat-raised-button>Dodaj plik</button>
-        </div>
-
-        <!--      <ul class="pliki">-->
-        <!--        <li *ngFor="let plik of pliki">-->
-        <!--          <span class="student"><a href="{{ plik.url }}">{{plik.name}}</a> </span>-->
-        <!--        </li>-->
-        <!--      </ul>-->
-      </div>
-    </div>
-  </div>
 </mat-card>
