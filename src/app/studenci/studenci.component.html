@@ -1,0 +1,44 @@
+<mat-card class="studenci">
+  <h1>Lista studentów</h1>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="studentId">
+      <th mat-header-cell *matHeaderCellDef>Student ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.studentId }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="imie">
+      <th mat-header-cell *matHeaderCellDef>Imię</th>
+      <td mat-cell *matCellDef="let element">{{ element.imie }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nazwisko">
+      <th mat-header-cell *matHeaderCellDef>Nazwisko</th>
+      <td mat-cell *matCellDef="let element">{{ element.nazwisko }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nrIndeksu">
+      <th mat-header-cell *matHeaderCellDef>Nr indeksu</th>
+      <td mat-cell *matCellDef="let element">{{ element.nrIndeksu }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>E-mail</th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="stacjonarny">
+      <th mat-header-cell *matHeaderCellDef>Stacjonarny</th>
+      <td mat-cell *matCellDef="let element">{{ element.stacjonarny }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="przycisk">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <button (click)="usunStudenta(element.studentId)" mat-raised-button color="primary">Usuń</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</mat-card>

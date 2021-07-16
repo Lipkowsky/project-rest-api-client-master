@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-dodaj-studenta',
@@ -15,7 +16,7 @@ export class DodajStudentaComponent implements OnInit {
   email!: string;
   stacjonarny: boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -34,7 +35,8 @@ export class DodajStudentaComponent implements OnInit {
     const result = this.http.post<any>(this.url + 'nowyStudent?imie=' + student.imie + '&nazwisko=' + this.nazwisko + '&nr_indeksu=' + student.nr_indeksu + '&email=' + student.email + '&stacjonarny=' + student.stacjonarny, {options});
     result.subscribe(data => {
       console.log(data);
-    })
+    });
+    this.router.navigate(['/studenci']);
   }
 
 

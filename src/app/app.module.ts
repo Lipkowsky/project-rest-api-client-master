@@ -14,6 +14,7 @@ import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {ProjektyComponent} from './projekty/projekty.component';
+import {StudenciComponent} from './studenci/studenci.component';
 import {MatTableModule} from '@angular/material/table';
 import {ZadanieComponent} from './zadanie/zadanie.component';
 import {HttpInterceptorService} from './http-interceptor.service';
@@ -39,6 +40,7 @@ import { DodajStudentaComponent } from './dodaj-studenta/dodaj-studenta.componen
     StudentComponent,
     DodajProjektComponent,
     DodajStudentaComponent,
+    StudenciComponent
   ],
   imports: [
     BrowserModule,
